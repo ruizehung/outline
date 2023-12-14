@@ -1,5 +1,6 @@
 ARG APP_PATH=/opt/outline
-FROM outlinewiki/outline-base as base
+# FROM outlinewiki/outline-base as base
+FROM outline-base-modified:latest as base
 
 ARG APP_PATH
 WORKDIR $APP_PATH
@@ -26,7 +27,7 @@ RUN addgroup -g 1001 -S nodejs && \
   adduser -S nodejs -u 1001 && \
   chown -R nodejs:nodejs $APP_PATH/build && \
   mkdir -p /var/lib/outline && \
-	chown -R nodejs:nodejs /var/lib/outline
+  chown -R nodejs:nodejs /var/lib/outline
 
 ENV FILE_STORAGE_LOCAL_ROOT_DIR /var/lib/outline/data
 RUN mkdir -p "$FILE_STORAGE_LOCAL_ROOT_DIR" && \

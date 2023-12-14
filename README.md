@@ -1,3 +1,13 @@
+# Edit:
+## This is a fork of Outline, with the following changes:
+- Enable require invite for new users without the need to be cloud hosted by Outline : )
+- Fix bug where the error notice from `userProvisioner` isn't propagated back to user properly
+- Update Dockerfile to build new image
+
+## How to use:
+1. `docker build -t outline-base-modified:latest -f Dockerfile.base .`
+2. `docker build -t outline-modified:latest .`
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/31465/34380645-bd67f474-eb0b-11e7-8d03-0151c1730654.png" height="29" />
 </p>
