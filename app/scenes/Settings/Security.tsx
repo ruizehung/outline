@@ -194,21 +194,19 @@ function Security() {
       </SettingRow>
 
       <h2>{t("Access")}</h2>
-      {isCloudHosted && (
-        <SettingRow
-          label={t("Require invites")}
-          name="inviteRequired"
-          description={t(
-            "Require members to be invited to the workspace before they can create an account using SSO."
-          )}
-        >
-          <Switch
-            id="inviteRequired"
-            checked={data.inviteRequired}
-            onChange={handleInviteRequiredChange}
-          />
-        </SettingRow>
-      )}
+      <SettingRow
+        label={t("Require invites")}
+        name="inviteRequired"
+        description={t(
+          "Require members to be invited to the workspace before they can create an account using SSO."
+        )}
+      >
+        <Switch
+          id="inviteRequired"
+          checked={data.inviteRequired}
+          onChange={handleInviteRequiredChange}
+        />
+      </SettingRow>
 
       {!data.inviteRequired && (
         <DomainManagement onSuccess={showSuccessMessage} />
