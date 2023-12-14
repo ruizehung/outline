@@ -138,12 +138,12 @@ async function accountProvisioner({
       authentication: emailMatchOnly
         ? undefined
         : {
-            authenticationProviderId: authenticationProvider.id,
-            ...authenticationParams,
-            expiresAt: authenticationParams.expiresIn
-              ? new Date(Date.now() + authenticationParams.expiresIn * 1000)
-              : undefined,
-          },
+          authenticationProviderId: authenticationProvider.id,
+          ...authenticationParams,
+          expiresAt: authenticationParams.expiresIn
+            ? new Date(Date.now() + authenticationParams.expiresIn * 1000)
+            : undefined,
+        },
     });
     const { isNewUser, user } = result;
 
@@ -181,7 +181,12 @@ async function accountProvisioner({
       isNewTeam,
     };
   } catch (err) {
-    throw AuthenticationError(err.message);
+    // Throwing AuthenticationError here overrides the error thrown by
+    // userProvisioner and prevents the correct error notice message from 
+    // being passed back to the user. 
+    // throw AuthenticationError(err.message);
+
+    throw err;
   }
 }
 
